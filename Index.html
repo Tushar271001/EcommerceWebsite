@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SS Mobile Store - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to SS Mobile Store</h1>
+    <p>Your one-stop destination for mobiles, accessories, and smart TVs.</p>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="products-section">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/samsung-galaxy-s22.jpg" alt="Samsung Galaxy S22">
+        <h3>Samsung Galaxy S22</h3>
+        <p>Flagship performance with stunning design.</p>
+        <div class="product-price">₹22899</div>
+        <button class="add-to-cart-btn"
+                data-name="Samsung Galaxy S22"
+                data-price="22899"
+                data-image="images/samsung-galaxy-s22.jpg">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/headphone.jpg" alt="Wireless Headphones">
+        <h3>Wireless Headphones</h3>
+        <p>Experience superior sound quality with comfort.</p>
+        <div class="product-price">₹479</div>
+        <button class="add-to-cart-btn"
+                data-name="Wireless Headphones"
+                data-price="79"
+                data-image="images/headphone.jpg">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/sonybraviaTV.webp" alt="Sony Bravia 50">
+        <h3>Sony Bravia 50"</h3>
+        <p>Immersive entertainment with vibrant visuals.</p>
+        <div class="product-price">₹999</div>
+        <button class="add-to-cart-btn"
+                data-name="Sony Bravia 50"
+                data-price="15999"
+                data-image="images/sonybraviaTV.webp">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- Cart Sidebar -->
+<div id="cart-sidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <span id="close-cart" class="close-cart">&times;</span>
+  </div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-footer">
+    <p>Total: <span id="cart-total">₹0.00</span></p>
+    <button id="checkout-btn" class="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+
+  <div id="footer"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/loguser.js"></script>
+</body>
+</html>

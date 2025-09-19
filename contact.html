@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - SS Mobile Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1>Contact Us!</h1>
+    <div class="contact-container">
+      
+      <!-- Left Side Info -->
+      <div class="contact-info">
+        <h2>Get In Touch With Us</h2>
+        <p>We can't solve your problem if you don't tell us about it. Send us a note and we’ll get back to you as quickly as possible.</p>
+        
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <span>Head Office</span><br>
+            SS House Shaupur, Kolhapur
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <span>GADHINGLAJ Office</span><br>
+            Opp Bus Stand Gadhinglaj 416502
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <span>Corporate Office</span><br>
+            Marval Vista Building, Lulla Nagar, Bibwewadi, Pune
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            marketing@ssmobile.com
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            +91 7030293434
+          </div>
+        </div>
+      </div>
+
+     <!-- Right Side Form -->
+<div class="contact-form">
+  <form id="contact-form">
+    <input type="text" id="contact-name" placeholder="Name" required>
+    <input type="text" id="contact-phone" placeholder="Phone Number" required>
+    <input type="email" id="contact-email" placeholder="E-mail" required>
+    <textarea id="contact-message" placeholder="Message" required></textarea>
+
+    <div class="checkbox">
+      <input type="checkbox" id="terms" required>
+      <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+    </div>
+
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<!-- ✅ Popup Modal -->
+<div id="contact-popup" class="popup">
+  <div class="popup-content">
+    <span class="close-popup">&times;</span>
+    <p id="popup-message"></p>
+  </div>
+</div>
+</div>
+</section><br>
+
+<!-- Footer -->
+  <div id="footer"></div>
+
+
+  
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/loguser.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    const popup = document.getElementById("contact-popup");
+    const popupMessage = document.getElementById("popup-message");
+    const closePopup = document.querySelector(".close-popup");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("contact-name").value;
+
+      // Show popup with message
+      popupMessage.textContent = "✅ Thank you, " + name + "! Your message has been sent successfully.";
+      popup.style.display = "block";
+
+      // Reset form
+      form.reset();
+    });
+
+    // Close popup on X
+    closePopup.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+
+    // Close popup on outside click
+    window.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

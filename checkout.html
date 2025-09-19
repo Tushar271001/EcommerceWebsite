@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - SS Mobile Store</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <section class="checkout-section">
+    <h1>Checkout</h1>
+    <p>Review your cart items and proceed to payment.</p>
+
+    <div class="checkout-container">
+      <table class="checkout-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price (₹)</th>
+          </tr>
+        </thead>
+        <tbody id="checkout-items">
+        </tbody>
+      </table>
+
+      <div class="checkout-summary">
+        <h2>Total: <span id="checkout-total">₹0.00</span></h2>
+        <button id="place-order-btn" class="product-btn">Place Order</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/loguser.js"></script>
+  <script>
+
+    function getLoggedUser() {
+      return JSON.parse(localStorage.getItem("loggedInUser")) || null;
+    }
+
+    function getCart() {
+      const user = getLoggedUser();
+      if (!user) return [];
+      return JSON.parse(localStorage.getItem("cart_" + user.email)) || [];
+    }
+
+  
+    function renderCheckout() {
+      const cart = getCart();
+      const checkoutItems = document.getElementById("checkout-items");
+      const checkoutTotal = document.getElementById("checkout-total");
+
+      checkoutItems.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        checkoutItems.innerHTML = `<tr><td colspan="2">Your cart is empty.</td></tr>`;
+        checkoutTotal.textContent = "₹0.00";
+        return;
+      }
+
+      cart.forEach(item => {
+        const itemTotal = item.price * (item.quantity || 1); // ✅ supports quantity
+        total += itemTotal;
+        checkoutItems.innerHTML += `
+          <tr>
+            <td>${item.name} ${item.quantity ? `× ${item.quantity}` : ""}</td>
+            <td>₹${itemTotal.toFixed(2)}</td>
+          </tr>
+        `;
+      });
+
+      checkoutTotal.textContent = `₹${total.toFixed(2)}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCheckout();
+
+      document.getElementById("place-order-btn").addEventListener("click", () => {
+        const user = getLoggedUser();
+        if (!user) {
+          alert("Please login to place an order.");
+          return;
+        }
+
+        alert("🎉 Your order has been placed successfully!");
+        localStorage.removeItem("cart_" + user.email); // ✅ clear only this user's cart
+        window.location.href = "index.html"; // ✅ redirect to home
+      });
+    });
+  </script>
+</body>
+</html>
